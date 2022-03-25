@@ -51,7 +51,7 @@ Ngoài value, nó có những tham số params, method, produces. Sử dụng ph
 
 **8.**
 ```sql
-
+@RequestBody được dùng để ánh xạ HttpRequest body sang một domain object tự động.
 ```
 ***
 
