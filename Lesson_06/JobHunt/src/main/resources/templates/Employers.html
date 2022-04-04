@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employers</title>
+</head>
+<body>
+    <h1>Danh sách nhà tuyển dụng</h1>
+    <table>
+        <thead >
+        <tr >
+            <th>Number</th>
+            <th>Name</th>
+            <th>Website</th>
+            <th>Email</th>
+            <th>Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employer, iStat:${employers}">
+            <th scope="row" th:text = "${iStat.index}+1"></th>
+            <td th:text="${employer.name}">Name</td>
+            <td th:text="${employer.website}">Website</td>
+            <td th:text="${employer.email}">Email</td>
+            <td th:text="${employer.address}">Address</td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/employer/add">Add new employer</a>
+      <br>
+      <a href="/">Home Page</a>
+</body>
+</html>
