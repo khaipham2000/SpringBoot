@@ -12,7 +12,7 @@ function createBoxes() {
     wrap.appendChild(fiveBoxes);
     totalBoxes.innerText = `Total box: ${box.length}`;
   }
-  removeBox();
+  removeBox()
 }
 createBoxes();
 
