@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .form {
+        display: flex;
+      }
+      img {
+        max-width: 100%;
+      }
+      .result {
+        width: 400px;
+        height: 400px;
+        border: 1px solid #000;
+      }
+      .result img {
+        width: 400px;
+        height: 400px;
+        object-fit: cover;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Breeds List</h1>
+    <div class="form">
+      <select id="breed-list" style="width: 200px" ></select>
+      <button id="btn">Get Sub Breed</button>
+    </div>
+    <div class="sub_breeds-list">
+      <h2>Sub breed list</h2>
+      <ul class="sub_list"></ul>
+    </div>
+    <div class="result">
+      <img id="image" src="" alt="" />
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
