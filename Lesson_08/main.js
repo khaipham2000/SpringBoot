@@ -47,7 +47,7 @@ subkeys = subBreeds;
     image.src = "";
   }
   if (subBreeds.length == 0) {
-    sub_list.innerHTML = "<h3>Không có sub breed</h3>";
+    sub_list.innerHTML = "<li>Không có sub breed</li>";
     image.src = "";
   }
 
