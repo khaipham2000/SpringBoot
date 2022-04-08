@@ -59,14 +59,9 @@ subkeys = subBreeds;
     li1.innerHTML = `<a href='#'>${subkeys[i]}</a>`;
     li1.addEventListener("click", async function () {
       try {
-        //B1: Gọi API
-        //Cách 1: Sử dụng fetch API mặc định
-        //Cách 2: Sử dụng axios ****
         let res2 = await axios.get(`https://dog.ceo/api/breed/${select.value}/${subBreeds[i]}/images/random`)
         console.log(res2);
-        //B2: lấy kết quả từ API để gán link cho image
         image.src = res2.data.message;
-        
       } catch (error) {
         console.log(error.response.data.message);
       }
