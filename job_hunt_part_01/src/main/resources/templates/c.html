@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="template.html :: header('Add employer')"> </head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/applicant">List Applicants</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mt-5">
+            <h1>Add New Applicant</h1>
+            <form
+                    action="#" th:action="@{/applicant/add}" method="post" name="applicant" enctype="multipart/form-data"
+                    th:object="${applicant}"
+            >
+
+                <div class="form-group row mt-3">
+                    <label for="name" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="name" autocomplete="off" th:field="*{name}"/>
+                    </div>
+                    <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+                </div>
+
+                <div class="form-group row mt-3">
+                    <label for="name" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="email" autocomplete="off" th:field="*{email}"/>
+                    </div>
+                    
+                <div class="form-group row mt-3">
+                    <label for="name" class="col-sm-2 col-form-label">Phone Number</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="phoneNumber" autocomplete="off" th:field="*{phoneNumber}"/>
+                    </div>
+
+                <div class="form-group row mt-3">
+                    <label for="name" class="col-sm-2 col-form-label">Skill Description</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="skill_description" autocomplete="off" th:field="*{skill_description}"/>
+                    </div>
+
+                <div class="form-group row mt-3">
+                    <label for="name" class="col-sm-2 col-form-label">Company</label>
+                    <div class="col-sm-4">
+                        <select
+                        class="form-control"
+                        th:field="${applicant.choose_company}"
+                        th:object="${employer}"
+                      >
+                        <option
+                          th:each="employer : ${employers}"
+                          th:value="${employer.name}"
+                          th:text="${employer.name}"
+                        ></option>
+                      </select>
+                  <br /><br />         
+                        
+                    </div>
+
+                <div class="form-group row mt-3">
+                    <label for="name" class="col-sm-2 col-form-label">Job</label>
+                    <div class="col-sm-4">
+                        <select
+                        class="form-control"
+                        th:field="${applicant.choose_job}"
+                        th:object="${job}"
+                      >
+                        <option
+                          th:each="job : ${jobs}"
+                          th:value="${job.title}"
+                          th:text="${job.title}"
+                        ></option>
+                      </select>
+                        
+                    </div>  
+                
+                <div class="form-group row mt-3">
+                    <label for="name" class="col-sm-2 col-form-label">City</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="choose_city" autocomplete="off" th:field="*{choose_city}"/>
+                    </div>   
+                    
+                <button class="btn btn-primary mt-3" type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
