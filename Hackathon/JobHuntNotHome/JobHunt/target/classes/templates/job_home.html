@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:replace="template.html :: header('Home page')">
+    </head>
+<body>
+    <header th:insert="template.html :: topmenu"> </header>
+    
+
+    <div class="row">
+        <div class="col-lg-8 mt-5">
+            <form action="#" th:action="@{/job/search}" method="get" th:object="${searchRequest}" >
+    
+                <div class="form-group row mt-3">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="title" autocomplete="off" placeholder="Key job title" name="keyword" th:value="*{keyword}"/>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <select th:field="*{city}">
+                            <option value="">Chọn Thành Phố</option>
+                            <option th:each="state : ${T(vn.techmaster.job_hunt.model.City).values()}" name="city" th:value="${state}"
+                                    th:text="${state.label}">
+                            </option>
+                        </select>
+                    </div>
+                    <div style="margin-left: -150px" class="col-sm-2">
+                    <button class="btn btn-primary mt-3" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+
+    <table id="job" class="table table-striped table-bordered ">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Title</th>
+            <th scope="col">Employer</th>
+            <th scope="col">City</th>
+            <th scope="col">Description</th>
+            <th scope="col">Application total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="job, iStat:${jobs}">
+            <th scope="row" th:text="${iStat.index} +1"></th>
+            <td><a th:href="|/job/${job.id}|" th:text="${job.title}"></a></td>
+            <td th:text="${employer.get(job.emp_id).name}">Employer Name</td>
+            <td th:text="${job.city}">City</td>
+            <td th:text="${job.description}">Description</td>    
+            <td th:if="${totalApplicantMap.get(job.id)} == null">0</td>
+            <td th:text="${totalApplicantMap.get(job.id)}"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <header th:replace="template.html :: footer"> </header>
+</body>
+</html>
